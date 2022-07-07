@@ -18,4 +18,20 @@ async function GetAllGames(){
   console.log("List of Games ", response.data)
 }
 
+
+function App() {
+  const [gameId, setGameId] = useState([]);
+  
+  useEffect(()=>{
+    GetGameId();
+  }, [])
+}
+
+
+async function GetGameId(){
+  let response = await axios.get('http://localhost:8080/GetId/10');
+  setGame(response.data);
+  console.log("Game with ID ", response.data)
+}
+
 export default App;
