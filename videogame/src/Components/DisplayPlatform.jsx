@@ -37,12 +37,17 @@ const DisplayPlatform =({videoGames}) => {
 
 
             const data = [
-                ["Year", ...platformArray
+                ["Year", ...individualPlatforms
                 ],
                 ["2013-2016", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
             ]
             return data;
 
+
+
+
+
+        
         }
 
 
