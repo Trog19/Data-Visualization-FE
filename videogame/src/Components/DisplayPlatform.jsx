@@ -18,38 +18,36 @@ const DisplayPlatform =({videoGames}) => {
  
             console.log ("Platforms", platform)
 
-            let individualPlatforms = [... new Set(platform)]
+            let individualPlatforms = [...new Set(platform)]
 
             console.log('IndPlatforms', individualPlatforms)
 
 
             let platformArray = individualPlatforms.map(platforms => {
 
-            let allGamesForPlatform = filteredGame.filter(game => game.platform == platforms);
+            let gamesByPlatform = filteredGame.filter(game => game.platform === platforms);
 
-            console.log("Allagmes", allGamesForPlatform)
+            let gameGlobalSale = 0 
+                for (let i = 0; i < gamesByPlatform.length; i++ ){
+                    gameGlobalSale += gamesByPlatform[i].globalsales;
+                }
+                
+                
+                return [platform, gameGlobalSale, "silver"]
 
-            // let globalSales = allGamesForPlatform.map(game => game.globalsale);
 
-            // console.log(globalSales)
-            });
-
-
+                
+        });
 
             const data = [
-                ["Year", ...individualPlatforms
-                ],
-                ["2013-2016", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+                ["Year", ...individualPlatforms]
+               
             ]
             return data;
-
-
-
-
-
-        
+            
+            
         }
-
+      
 
         const options = {
             title: "Global Game Sales By Console",
@@ -60,8 +58,6 @@ const DisplayPlatform =({videoGames}) => {
           };
 
 
-
-  
 
     return (
       <Chart chartType="ComboChart" width="100%" height="400px" data={generateDataFormChart()} options={options}/>
