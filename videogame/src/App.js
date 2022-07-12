@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import DisplayPlatform from "./Components/DisplayPlatform";
-// import DisplayQGraph from "./Components/DisplayQGraph";
+import DisplayQGraph from "./Components/DisplayQGraph";
 import SearchBar from "./Components/SearchBar";
 import DisplayGames from "./Components/DisplayGames";
 
@@ -15,7 +15,8 @@ function App() {
 
 const searchGames = (searchTerm) =>{
   let results = videoGames.filter((videoGames)=>{
-    if(videoGames.name.includes(searchTerm) || videoGames.id === (searchTerm)){
+    const limit = 10;
+    if(videoGames.name.includes(searchTerm) || videoGames.id === (searchTerm) || videoGames.publisher === (searchTerm)){
       return true;
     }
   }
@@ -36,7 +37,7 @@ return (
   <><div>
     <SearchBar searchGames ={searchGames}/>
       <DisplayPlatform videoGames={videoGames} />
-      {/* <DisplayQGraph videoGames={videoGames} /> */}
+      <DisplayQGraph videoGames={videoGames} />
   </div>
     <DisplayGames videoGames={videoGames}/>
   <div>
