@@ -31,7 +31,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/GetId/10",
+					"raw": "http://localhost:8080/GetId/1",
 					"protocol": "http",
 					"host": [
 						"localhost"

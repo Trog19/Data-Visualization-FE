@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import DisplayPlatform from "./Components/DisplayPlatform";
+import DisplayQGraph from "./Components/DisplayQGraph";
+import SearchBar from "./Components/SearchBar";
 
 function App() {
   const [videoGames, setVideoGames] = useState([]);
@@ -9,6 +11,14 @@ function App() {
     GetVideoGames();
   }, [])
 
+const searchGames = (searchTerm) =>{
+  let results = videoGames.filter((videoGames)=>{
+    if(videoGames.name.includes(searchTerm) || videoGames.id === (searchTerm)){
+      return true;
+    }
+  }
+  );setVideoGames(results)
+}
 
 
 async function GetVideoGames(){
@@ -21,9 +31,12 @@ async function GetVideoGames(){
 }
 
 return (
-  <div>
-    <DisplayPlatform videoGames={videoGames}/>
-  </div>
+  <><div>
+    <SearchBar />
+  </div><div>
+      <DisplayPlatform videoGames={videoGames} />
+      <DisplayQGraph videoGames={videoGames} />
+    </div></>
 );
 
 
