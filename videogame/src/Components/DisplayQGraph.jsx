@@ -27,13 +27,13 @@ const DisplayQGraph =({videoGames}) => {
                 for (let i = 0; i < genreByPlatform.length; i++ ){
                     genrePopularity += genreByPlatform[i].genre;
                 }
-                console.log(platforms, genrePopularity)
+                console.log("GENRE", platforms, genrePopularity)
 
                 return [platforms, genrePopularity]
         });
 
             const data = [
-                ["Platform", "Sales"],
+                ["Platform", "Genre"],
                 ...platformArray  
             ]
             console.log("Stuff to render " ,data)
@@ -43,8 +43,8 @@ const DisplayQGraph =({videoGames}) => {
     
         const options = {
             title: "Most Popular Genre By Console",
-            vAxis: { title: "Games Sold" },
-            hAxis: { title: "Year" },
+            vAxis: { title: "Most Popular Genre" },
+            hAxis: { title: "Console" },
             seriesType: "bars",
             series: { 11: { type: "line" } },
           };

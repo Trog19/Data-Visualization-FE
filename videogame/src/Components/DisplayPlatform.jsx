@@ -40,7 +40,6 @@ const DisplayPlatform =({videoGames}) => {
                 ["Platform", "Sales"],
                 ...platformArray  
             ]
-            console.log("Stuff to render " ,data)
             return data;            
             
         }

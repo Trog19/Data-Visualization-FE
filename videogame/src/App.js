@@ -32,7 +32,7 @@ async function GetVideoGames(){
 
 return (
   <><div>
-    <SearchBar />
+    <SearchBar searchGames ={searchGames}/>
   </div><div>
       <DisplayPlatform videoGames={videoGames} />
       <DisplayQGraph videoGames={videoGames} />
