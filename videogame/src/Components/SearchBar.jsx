@@ -7,7 +7,7 @@ const SearchBar = (props) => {
     function handleSubmit(event){
         event.preventDefault();
        
-        props.displayGames(search)
+        props.searchGames(search)
         console.log(search)
     }
     return ( 

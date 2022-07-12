@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import DisplayPlatform from "./Components/DisplayPlatform";
-import DisplayQGraph from "./Components/DisplayQGraph";
+// import DisplayQGraph from "./Components/DisplayQGraph";
 import SearchBar from "./Components/SearchBar";
+import DisplayGames from "./Components/DisplayGames";
+
 
 function App() {
   const [videoGames, setVideoGames] = useState([]);
@@ -33,9 +35,11 @@ async function GetVideoGames(){
 return (
   <><div>
     <SearchBar searchGames ={searchGames}/>
-  </div><div>
       <DisplayPlatform videoGames={videoGames} />
-      <DisplayQGraph videoGames={videoGames} />
+      {/* <DisplayQGraph videoGames={videoGames} /> */}
+  </div>
+    <DisplayGames videoGames={videoGames}/>
+  <div>
     </div></>
 );
 
