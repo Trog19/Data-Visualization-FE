@@ -31,23 +31,42 @@ const DisplayPlatform =({videoGames}) => {
                 for (let i = 0; i < gamesByPlatform.length; i++ ){
                     gameGlobalSale += gamesByPlatform[i].globalsales;
                 }
-                
-                
-                return [platform, gameGlobalSale, "silver"]
+                console.log(platforms, gameGlobalSale)
+
+                return [platforms, gameGlobalSale]
 
 
-                
+            
         });
 
             const data = [
-                ["Year", ...individualPlatforms]
+                ["Platform", "Sales"],
+                ...platformArray
                
             ]
+
+
+            console.log("Stuff to render " ,data)
             return data;
+
             
             
         }
-      
+        
+        // export const data = [
+        //     ["Year", "Sales", "Expenses", "Profit"],
+        //     ["2014", 1000, 400, 200],
+        //     ["2015", 1170, 460, 250],
+        //     ["2016", 660, 1120, 300],
+        //     ["2017", 1030, 540, 350],
+        //   ];
+          
+        //   export const options = {
+        //     chart: {
+        //       title: "Company Performance",
+        //       subtitle: "Sales, Expenses, and Profit: 2014-2017",
+        //     },
+        //   };
 
         const options = {
             title: "Global Game Sales By Console",
@@ -60,7 +79,7 @@ const DisplayPlatform =({videoGames}) => {
 
 
     return (
-      <Chart chartType="ComboChart" width="100%" height="400px" data={generateDataFormChart()} options={options}/>
+      <Chart chartType="ColumnChart" width="100%" height="400px" data={generateDataFormChart()} options={options}/>
     );
 
 
