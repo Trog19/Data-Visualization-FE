@@ -4,18 +4,18 @@ import DisplayPlatform from "./Components/DisplayPlatform";
 import DisplayQGraph from "./Components/DisplayQGraph";
 import SearchBar from "./Components/SearchBar";
 import DisplayGames from "./Components/DisplayGames";
+import "./App.css";
 
 
 function App() {
   const [videoGames, setVideoGames] = useState([]);
-  
+
   useEffect(()=>{
     GetVideoGames();
   }, [])
 
 const searchGames = (searchTerm) =>{
   let results = videoGames.filter((videoGames)=>{
-    const limit = 10;
     if(videoGames.name.includes(searchTerm) || videoGames.id === (searchTerm) || videoGames.publisher === (searchTerm)){
       return true;
     }
@@ -33,9 +33,12 @@ async function GetVideoGames(){
 }
 }
 
+
 return (
   <><div>
+    <header className="searchbar">
     <SearchBar searchGames ={searchGames}/>
+    </header>
       <DisplayPlatform videoGames={videoGames} />
       <DisplayQGraph videoGames={videoGames} />
   </div>
