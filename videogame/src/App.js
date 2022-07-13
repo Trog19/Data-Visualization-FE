@@ -5,6 +5,7 @@ import DisplayQGraph from "./Components/DisplayQGraph";
 import SearchBar from "./Components/SearchBar";
 import DisplayGames from "./Components/DisplayGames";
 import "./App.css";
+import GetIdBar from "./Components/GetId";
 
 
 function App() {
@@ -13,6 +14,34 @@ function App() {
   useEffect(()=>{
     GetVideoGames();
   }, [])
+
+  async function GetVideoGames(){
+    try{
+    let response = await axios.get('http://localhost:8080/getAll');
+    setVideoGames(response.data);
+  } catch(ex){
+    console.log(`ERROR in getVideoGames': ${ex}`)
+  }
+  }
+
+
+  async function GetById(){
+    try{
+      let response = await axios.get('http://localhost:8080/GetId/{}');
+      setVideoGames(response.data);
+  } catch(ex){
+      console.log(`ERROR in GetById: ${ex}`)
+  }
+  }
+  
+  const searchId = (searchTerm) =>{
+    let results = videoGames.filter((videoGames)=>{
+      if(videoGames.id === (searchTerm)){
+        return true;
+      }
+    }
+    ); setVideoGames(results)
+  }
 
 const searchGames = (searchTerm) =>{
   let results = videoGames.filter((videoGames)=>{
@@ -24,23 +53,20 @@ const searchGames = (searchTerm) =>{
 }
 
 
-async function GetVideoGames(){
-  try{
-  let response = await axios.get('http://localhost:8080/getAll');
-  setVideoGames(response.data);
-} catch(ex){
-  console.log(`ERROR in getVideoGames': ${ex}`)
-}
-}
+
+
+
 
 
 return (
   <><div>
-    <header className="searchbar">
+    <header className="header">DATA VISUALIZATION</header>
+    <div className="searchbar">
     <SearchBar searchGames ={searchGames}/>
-    </header>
-      <DisplayPlatform videoGames={videoGames} />
+    </div>
+      <DisplayPlatform className="graph" videoGames={videoGames} />
       <DisplayQGraph videoGames={videoGames} />
+      <GetIdBar searchId={searchId}/>
   </div>
     <DisplayGames videoGames={videoGames}/>
   <div>

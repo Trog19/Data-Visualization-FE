@@ -45,7 +45,7 @@ const DisplayPlatform =({videoGames}) => {
         }
     
         const options = {
-            title: "Global Game Sales By Console",
+            title: "Global Game Sales By Console After 2013",
             vAxis: { title: "Revenue in Millions" },
             hAxis: { title: "Console" },
             seriesType: "bars",
